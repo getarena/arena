@@ -766,7 +766,7 @@ body {
 }
 
 .about-hero-inner {
-  width: min(100% - 48px, 1020px) !important;
+  width: min(calc(100% - 48px), 1020px) !important;
   padding: clamp(76px, 9vw, 112px) 0 !important;
 }
 
@@ -1518,7 +1518,7 @@ body {
   }
 
   .about-hero-inner {
-    width: min(100% - 36px, 680px) !important;
+    width: min(calc(100% - 36px), 680px) !important;
     padding: 74px 0 76px !important;
   }
 
