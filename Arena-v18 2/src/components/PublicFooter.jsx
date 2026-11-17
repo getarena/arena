@@ -1,8 +1,8 @@
 import { BrandMark, Icon } from './Icon'
 
-function FooterLink({ href, children, newTab = false }) {
+function FooterLink({ href, children }) {
   return (
-    <a href={href} target={newTab ? '_blank' : undefined} rel={newTab ? 'noopener noreferrer' : undefined}>
+    <a href={href}>
       {children}
     </a>
   )
@@ -27,21 +27,21 @@ export function PublicFooter({ compact = false }) {
             <FooterLink href="/#problem">Why Arena</FooterLink>
             <FooterLink href="/#review-room">Review room</FooterLink>
             <FooterLink href="/#workflow">Workflow</FooterLink>
-            <FooterLink href="/about" newTab>About</FooterLink>
+            <FooterLink href="/about">About</FooterLink>
           </div>
 
           <div className="public-footer-v17-9-column">
             <h3>Trust</h3>
-            <FooterLink href="/security" newTab>Security</FooterLink>
-            <FooterLink href="/privacy" newTab>Privacy policy</FooterLink>
-            <FooterLink href="/terms" newTab>Terms of service</FooterLink>
-            <FooterLink href="/acceptable-use" newTab>Acceptable use</FooterLink>
+            <FooterLink href="/security">Security</FooterLink>
+            <FooterLink href="/privacy">Privacy policy</FooterLink>
+            <FooterLink href="/terms">Terms of service</FooterLink>
+            <FooterLink href="/acceptable-use">Acceptable use</FooterLink>
           </div>
 
           <div className="public-footer-v17-9-column">
             <h3>Support</h3>
-            <FooterLink href="/help" newTab>Help</FooterLink>
-            <FooterLink href="/contact" newTab>Contact</FooterLink>
+            <FooterLink href="/help">Help</FooterLink>
+            <FooterLink href="/contact">Contact</FooterLink>
             <FooterLink href="/login">Start free</FooterLink>
           </div>
         </div>
