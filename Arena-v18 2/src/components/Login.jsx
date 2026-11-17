@@ -88,7 +88,7 @@ export function Login() {
               />
               <span className="login-consent-box" aria-hidden="true">{legalConsent ? '✓' : ''}</span>
               <span className="login-consent-copy">
-                I agree to Arena's <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> and acknowledge the <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                I agree to Arena's <a href="/terms">Terms of Service</a> and acknowledge the <a href="/privacy">Privacy Policy</a>.
               </span>
             </label>
             <label className="login-consent-label login-age-consent">
@@ -106,7 +106,7 @@ export function Login() {
             {loading ? 'Signing in…' : 'Continue with Google'}
             <Icon name="arrowRight" size={15} />
           </button>
-          <div className="login-security"><Icon name="lock" size={14} /><span>Secure authentication powered by Google</span></div><a className="login-about-link" href="/about" target="_blank" rel="noopener noreferrer">Not sure what Arena is? Read the plain-English guide <Icon name="arrowRight" size={12} /></a>
+          <div className="login-security"><Icon name="lock" size={14} /><span>Secure authentication powered by Google</span></div><a className="login-about-link" href="/about">Not sure what Arena is? Read the plain-English guide <Icon name="arrowRight" size={12} /></a>
         </div>
       </div>
       <div className="login-preview-wrap"><MiniReviewPreview /></div>
