@@ -1,5 +1,6 @@
 import { BrandMark, Icon } from './Icon'
 import { PublicFooter } from './PublicFooter'
+import { ArenaBadge, ArenaButton, ArenaCard } from './ArenaStudioComponents'
 
 function go(path) { window.location.href = path }
 
@@ -14,7 +15,7 @@ export function PublicNav({ active = '' }) {
         <a className={active === 'about' ? 'active' : ''} href="/about" target="_blank" rel="noopener noreferrer">About</a>
       </div>
       <div className="public-nav-actions">
-        <button type="button" className="btn-primary compact" onClick={() => go('/login')}>Start free <Icon name="arrowRight" size={14} /></button>
+        <ArenaButton type="button" variant="primary" size="sm" className="btn-primary compact" onClick={() => go('/login')}>Start free <Icon name="arrowRight" size={14} /></ArenaButton>
       </div>
     </nav>
   )
@@ -25,7 +26,11 @@ export function PublicPage({ eyebrow, title, lede, active, children }) {
     <div className="public-page">
       <PublicNav active={active} />
       <main className="public-page-main">
-        <header className="public-page-hero"><div className="public-page-kicker">ARENA / {eyebrow}</div><h1>{title}</h1>{lede ? <p>{lede}</p> : null}</header>
+        <header className="public-page-hero">
+          <ArenaBadge as="div" tone="quiet" className="public-page-kicker">ARENA / {eyebrow}</ArenaBadge>
+          <h1>{title}</h1>
+          {lede ? <p>{lede}</p> : null}
+        </header>
         <div className="public-page-content">{children}</div>
       </main>
       <PublicFooter />
@@ -34,5 +39,11 @@ export function PublicPage({ eyebrow, title, lede, active, children }) {
 }
 
 export function PublicSection({ label, title, children }) {
-  return <section className="public-section">{label ? <div className="public-section-label">{label}</div> : null}{title ? <h2>{title}</h2> : null}<div className="public-section-body">{children}</div></section>
+  return (
+    <ArenaCard as="section" tone="editorial" className="public-section">
+      {label ? <div className="public-section-label">{label}</div> : null}
+      {title ? <h2>{title}</h2> : null}
+      <div className="public-section-body">{children}</div>
+    </ArenaCard>
+  )
 }
