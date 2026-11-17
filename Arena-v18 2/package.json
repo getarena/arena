@@ -1,0 +1,33 @@
+{
+  "name": "arena",
+  "private": true,
+  "version": "0.18.9",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test:security": "node security-tests/v18.2-data-boundary.test.mjs && node security-tests/v18.2-cloudinary-runtime.test.mjs && node security-tests/v18.3-abuse-session.test.mjs && node security-tests/v18.3-abuse-session-runtime.test.mjs && node security-tests/v18.5-v18.6-security.test.mjs && node security-tests/v18.7-supply-chain.test.mjs && node security-tests/v18.8-adversarial.test.mjs",
+    "test:security:registry": "npm audit --audit-level=high"
+  },
+  "dependencies": {
+    "firebase": "12.18.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "@vitejs/plugin-react": "6.1.1",
+    "eslint": "10.10.0",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "eslint-plugin-react-refresh": "0.5.6",
+    "globals": "17.12.0",
+    "vite": "8.2.2"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  }
+}

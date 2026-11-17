@@ -1,0 +1,88 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function ownsProject(projectId) {
+      return signedIn()
+        && get(/databases/$(database)/documents/projects/$(projectId)).data.userId == request.auth.uid;
+    }
+
+    match /projects/{projectId} {
+      // Project creation is server-authoritative. Browser clients cannot create
+      // project documents directly; /api/project generates the project ID and
+      // share token after authenticating the owner.
+      allow create: if false;
+
+      // Workspace reads are owner-only. Queries must resolve to documents owned
+      // by the signed-in user.
+      allow get, list: if signedIn()
+        && resource.data.userId == request.auth.uid;
+
+      // Until Arena exposes an intentional project-name editor, the only
+      // client-editable project field is title. Lifecycle/status/share/password
+      // fields are server-controlled through the Vercel API.
+      allow update: if signedIn()
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['title'])
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 200;
+
+      // Direct client deletion is intentionally disabled. Deletion must go
+      // through the server lifecycle endpoint so Cloudinary assets and nested
+      // Firestore records are cleaned up together.
+      allow delete: if false;
+
+      match /videos/{videoId} {
+        allow read: if ownsProject(projectId);
+
+        // Version documents are created and lifecycle-managed by the trusted
+        // Vercel API after it verifies the authenticated owner and Cloudinary
+        // asset binding. The browser never writes version metadata directly.
+        allow create, update, delete: if false;
+
+        match /comments/{commentId} {
+          allow read: if ownsProject(projectId);
+
+          // Creator comments are created by the authenticated owner. Public
+          // client comments never write Firestore directly; they use /api/review.
+          allow create: if ownsProject(projectId)
+            && request.resource.data.keys().hasAll([
+              'timestamp', 'text', 'clientName', 'clientEmail', 'resolved', 'createdAt'
+            ])
+            && request.resource.data.keys().hasOnly([
+              'timestamp', 'text', 'clientName', 'clientEmail', 'resolved', 'createdAt'
+            ])
+            && request.resource.data.timestamp is number
+            && request.resource.data.timestamp >= 0
+            && request.resource.data.timestamp <= get(/databases/$(database)/documents/projects/$(projectId)/videos/$(videoId)).data.duration
+            && request.resource.data.text is string
+            && request.resource.data.text.size() > 0
+            && request.resource.data.text.size() <= 2000
+            && request.resource.data.clientName is string
+            && request.resource.data.clientName.size() > 0
+            && request.resource.data.clientName.size() <= 120
+            && request.resource.data.clientEmail is string
+            && request.resource.data.clientEmail.size() <= 320
+            && request.resource.data.resolved == false
+            && request.resource.data.createdAt == request.time
+            && request.resource.data.clientEmail == request.auth.token.email;
+
+          // Resolve/reopen is the only direct browser edit currently required.
+          // The text, identity and creation timestamp are immutable.
+          allow update: if ownsProject(projectId)
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['resolved', 'updatedAt'])
+            && request.resource.data.resolved is bool
+            && request.resource.data.updatedAt == request.time;
+
+          allow delete: if false;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,366 @@
+/* ============================================================================
+   ARENA V17.1 — CONTRAST + THEME HARDENING
+   Purpose: close the visual gaps exposed by dark-mode/public-route screenshots.
+   This file is intentionally loaded after App.css + Redesign.css so these
+   rules are the final source of truth for text/background contrast.
+   ========================================================================== */
+
+/* Keep native controls honest with the active surface. */
+:root { color-scheme: light; }
+:root[data-theme='dark'] { color-scheme: dark; }
+
+/* --------------------------------------------------------------------------
+   PUBLIC ROUTES: public/legal pages always remain light.
+   The workspace theme is device-local; it should never leak into public copy.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .public-page,
+:root[data-theme='dark'] .about-page,
+:root[data-theme='dark'] .landing-page,
+:root[data-theme='dark'] .login-container {
+  color-scheme: light;
+  background: #fbfaf7;
+  color: #3d3933;
+}
+
+:root[data-theme='dark'] .public-page .public-nav,
+:root[data-theme='dark'] .about-page .public-nav,
+:root[data-theme='dark'] .landing-page .public-nav {
+  background: rgba(255,255,255,.95);
+  border-color: #e2dcd4;
+  color: #161513;
+}
+
+:root[data-theme='dark'] .public-page .public-nav-brand,
+:root[data-theme='dark'] .about-page .public-nav-brand,
+:root[data-theme='dark'] .landing-page .public-nav-brand { color: #161513; }
+
+:root[data-theme='dark'] .public-page .public-nav-links button,
+:root[data-theme='dark'] .about-page .public-nav-links button,
+:root[data-theme='dark'] .landing-page .public-nav-links button,
+:root[data-theme='dark'] .public-page .public-nav-quiet,
+:root[data-theme='dark'] .about-page .public-nav-quiet,
+:root[data-theme='dark'] .landing-page .public-nav-quiet { color: #625c55; }
+
+:root[data-theme='dark'] .public-page .public-nav-links button:hover,
+:root[data-theme='dark'] .public-page .public-nav-links button.active,
+:root[data-theme='dark'] .about-page .public-nav-links button:hover,
+:root[data-theme='dark'] .about-page .public-nav-links button.active,
+:root[data-theme='dark'] .landing-page .public-nav-links button:hover,
+:root[data-theme='dark'] .landing-page .public-nav-links button.active {
+  background: #f4f1eb;
+  color: #161513;
+}
+
+:root[data-theme='dark'] .public-page .public-page-hero h1,
+:root[data-theme='dark'] .about-page h1,
+:root[data-theme='dark'] .landing-page h1 { color: #161513; }
+
+:root[data-theme='dark'] .public-page .public-page-hero p,
+:root[data-theme='dark'] .public-page .public-section-body,
+:root[data-theme='dark'] .public-page .legal-updated,
+:root[data-theme='dark'] .public-page .help-list span,
+:root[data-theme='dark'] .about-page .about-hero-lede,
+:root[data-theme='dark'] .about-page .about-section-head p,
+:root[data-theme='dark'] .about-page .about-plain-card p,
+:root[data-theme='dark'] .about-page .about-role-grid li,
+:root[data-theme='dark'] .about-page .about-faq-item p,
+:root[data-theme='dark'] .landing-page .lp-hero-copy p,
+:root[data-theme='dark'] .landing-page .lp-section-lead p,
+:root[data-theme='dark'] .landing-page .lp-version-copy p {
+  color: #6f685f;
+}
+
+:root[data-theme='dark'] .public-page .public-page-kicker,
+:root[data-theme='dark'] .public-page .public-section-label,
+:root[data-theme='dark'] .public-page .help-list strong,
+:root[data-theme='dark'] .public-page .public-footer-links span,
+:root[data-theme='dark'] .public-page .public-footer-bottom,
+:root[data-theme='dark'] .about-page .about-index,
+:root[data-theme='dark'] .about-page .about-kicker {
+  color: #8b8379;
+}
+
+:root[data-theme='dark'] .public-page .public-section h2,
+:root[data-theme='dark'] .public-page .public-section-body strong,
+:root[data-theme='dark'] .public-page .help-list strong,
+:root[data-theme='dark'] .about-page .about-section-head h2,
+:root[data-theme='dark'] .about-page .about-version-copy h2,
+:root[data-theme='dark'] .about-page .about-roles h2,
+:root[data-theme='dark'] .about-page .about-faq-intro h2 {
+  color: #161513;
+}
+
+:root[data-theme='dark'] .public-page .public-page-hero,
+:root[data-theme='dark'] .public-page .public-section,
+:root[data-theme='dark'] .public-page .public-footer-main { border-color: #e9e4dc; }
+
+:root[data-theme='dark'] .public-page .public-footer-brand p { color: #80786f; }
+:root[data-theme='dark'] .public-page .public-footer-links button { color: #70685f; }
+:root[data-theme='dark'] .public-page .public-footer-links button:hover { color: #161513; }
+
+/* Login is also a public surface. Never let the workspace theme leak into it. */
+:root[data-theme='dark'] .login-container { background: #fbfaf7; }
+:root[data-theme='dark'] .login-card { background: #fff; }
+:root[data-theme='dark'] .login-card h2 { color: #161513; }
+:root[data-theme='dark'] .login-subtitle { color: #756e65; }
+:root[data-theme='dark'] .login-consent { background: #faf8f5; border-color: #ebe5de; }
+:root[data-theme='dark'] .login-consent-copy { color: #6b645c; }
+:root[data-theme='dark'] .login-security { color: #8e867d; border-color: #eee8e0; }
+:root[data-theme='dark'] .login-about-link { color: #e84c00; }
+
+/* --------------------------------------------------------------------------
+   DARK WORKSPACE TOKEN PASS
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] {
+  --arena-ink: #fff7ee !important;
+  --arena-ink-2: #f1e8df !important;
+  --arena-copy: #ddd4ca !important;
+  --arena-muted: #afa69c !important;
+  --arena-faint: #978e85 !important;
+  --arena-border: #39322b !important;
+  --arena-border-2: #4b4239 !important;
+  --arena-green: #5dcc9b !important;
+  --arena-red: #ff8b84 !important;
+  --arena-green-soft: rgba(92,204,155,.14) !important;
+  --arena-red-soft: rgba(255,139,132,.12) !important;
+  --arena-accent-soft: rgba(255,90,0,.14) !important;
+  --blue: #c94800 !important;
+  --blue-strong: #a83e00 !important;
+  --blue-soft: rgba(201,72,0,.12) !important;
+  --green: #5dcc9b !important;
+  --green-soft: rgba(92,204,155,.14) !important;
+  --red: #ff8b84 !important;
+  --red-soft: rgba(255,139,132,.12) !important;
+  --amber: #f2bd5e !important;
+  --amber-soft: rgba(242,189,94,.14) !important;
+}
+
+/* --------------------------------------------------------------------------
+   DARK WORKSPACE: sidebar, topbar, navigation, profile/account.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .workspace-shell,
+:root[data-theme='dark'] .workspace-main,
+:root[data-theme='dark'] .workspace-content { color: #eee6dd; }
+
+:root[data-theme='dark'] .workspace-nav-label,
+:root[data-theme='dark'] .workspace-breadcrumb,
+:root[data-theme='dark'] .workspace-account-copy span,
+:root[data-theme='dark'] .workspace-page-heading p,
+:root[data-theme='dark'] .dashboard-hero-copy > p,
+:root[data-theme='dark'] .dashboard-section-head p,
+:root[data-theme='dark'] .dashboard-attention-copy > p,
+:root[data-theme='dark'] .dashboard-attention-meta,
+:root[data-theme='dark'] .project-card-meta,
+:root[data-theme='dark'] .settings-copy,
+:root[data-theme='dark'] .settings-index a,
+:root[data-theme='dark'] .settings-subsection span,
+:root[data-theme='dark'] .settings-toggle-row small,
+:root[data-theme='dark'] .settings-link-grid a,
+:root[data-theme='dark'] .settings-link-grid small,
+:root[data-theme='dark'] .settings-savebar span,
+:root[data-theme='dark'] .profile-subtitle,
+:root[data-theme='dark'] .profile-v15-hero p,
+:root[data-theme='dark'] .profile-v15-details span,
+:root[data-theme='dark'] .project-hub-head p,
+:root[data-theme='dark'] .project-hub-summary span,
+:root[data-theme='dark'] .upload-side > p,
+:root[data-theme='dark'] .workspace-stat-strip span,
+:root[data-theme='dark'] .workspace-setup-head p,
+:root[data-theme='dark'] .workspace-setup-step small,
+:root[data-theme='dark'] .workspace-empty-state p,
+:root[data-theme='dark'] .review-row-main span,
+:root[data-theme='dark'] .review-row-updated,
+:root[data-theme='dark'] .activity-page-copy span,
+:root[data-theme='dark'] .activity-page-item time {
+  color: #b1a79d;
+}
+
+:root[data-theme='dark'] .workspace-nav-item { color: #bdb3aa; }
+:root[data-theme='dark'] .workspace-nav-item svg,
+:root[data-theme='dark'] .workspace-account-popover-head span,
+:root[data-theme='dark'] .workspace-breadcrumb svg { color: #9a9087; }
+:root[data-theme='dark'] .workspace-nav-item:hover { color: #fff7ee; }
+:root[data-theme='dark'] .workspace-nav-item.active { color: #ffab7b; }
+:root[data-theme='dark'] .workspace-nav-item.active svg { color: #ffab7b; }
+
+:root[data-theme='dark'] .workspace-account-popover-head strong,
+:root[data-theme='dark'] .workspace-account-copy strong,
+:root[data-theme='dark'] .dashboard-hero-v15 h1,
+:root[data-theme='dark'] .dashboard-section-head h2,
+:root[data-theme='dark'] .dashboard-attention-title-row h2,
+:root[data-theme='dark'] .project-card-title-row h3,
+:root[data-theme='dark'] .dashboard-bottom-card-head h2,
+:root[data-theme='dark'] .workspace-empty-state h3,
+:root[data-theme='dark'] .workspace-setup-head h2,
+:root[data-theme='dark'] .workspace-setup-step strong,
+:root[data-theme='dark'] .project-hub-head h1,
+:root[data-theme='dark'] .project-hub-summary strong,
+:root[data-theme='dark'] .upload-side h1,
+:root[data-theme='dark'] .upload-panel h2,
+:root[data-theme='dark'] .settings-card h2,
+:root[data-theme='dark'] .settings-subsection strong,
+:root[data-theme='dark'] .settings-toggle-row strong,
+:root[data-theme='dark'] .settings-link-grid strong,
+:root[data-theme='dark'] .profile-card-v15 h2,
+:root[data-theme='dark'] .profile-v15-hero h2,
+:root[data-theme='dark'] .profile-v15-details strong,
+:root[data-theme='dark'] .profile-account-actions h2,
+:root[data-theme='dark'] .review-row-main strong,
+:root[data-theme='dark'] .activity-page-card-head h2,
+:root[data-theme='dark'] .activity-page-copy strong {
+  color: #fff7ee;
+}
+
+/* Sidebar/account chrome should never fall back to warm-light text. */
+:root[data-theme='dark'] .workspace-sidebar-brand,
+:root[data-theme='dark'] .workspace-sidebar-bottom,
+:root[data-theme='dark'] .workspace-topbar { border-color: #302922; }
+:root[data-theme='dark'] .workspace-account-card { color: #fff7ee; }
+:root[data-theme='dark'] .workspace-account-popover > button { color: #eee6dd; }
+:root[data-theme='dark'] .workspace-account-popover > button svg { color: #a59b91; }
+:root[data-theme='dark'] .workspace-account-popover > button:hover { background: #24201c; color: #fff7ee; }
+:root[data-theme='dark'] .workspace-account-popover .workspace-account-danger { color: #ff9a92; }
+
+/* Stats and attention surfaces. */
+:root[data-theme='dark'] .workspace-stat-strip strong { color: #fff7ee; }
+:root[data-theme='dark'] .workspace-stat-strip > div.attention strong { color: #ffd27b; }
+:root[data-theme='dark'] .workspace-stat-strip > div.attention-red strong { color: #ffaaa3; }
+:root[data-theme='dark'] .workspace-setup-step > svg { color: #a79d93; }
+:root[data-theme='dark'] .workspace-setup-step-icon { color: #b3a99f; }
+:root[data-theme='dark'] .dashboard-attention-actions .row-action:not(.primary) { color: #c1b7ad; }
+:root[data-theme='dark'] .dashboard-bottom-card-head button { color: #ffab7b; }
+:root[data-theme='dark'] .dashboard-activity-list button { color: #eee6dd; }
+
+/* --------------------------------------------------------------------------
+   DARK PROJECT / REVIEW / ACTIVITY PAGES.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .project-card-title-row p { color: #aaa097; }
+:root[data-theme='dark'] .project-row-kicker,
+:root[data-theme='dark'] .project-card .project-row-kicker { color: #aaa097; }
+:root[data-theme='dark'] .project-card-meta svg { color: #9f968c; }
+:root[data-theme='dark'] .row-action { color: #c8beb4; }
+:root[data-theme='dark'] .row-action:hover { color: #fff7ee; }
+:root[data-theme='dark'] .row-action.danger { color: #ff9b94; }
+:root[data-theme='dark'] .status-badge.pending { background: rgba(242,189,94,.14); color: #ffd27b; }
+:root[data-theme='dark'] .status-badge.approved { background: rgba(92,204,155,.14); color: #74dda9; }
+:root[data-theme='dark'] .status-badge.changes { background: rgba(255,139,132,.12); color: #ffaba4; }
+
+:root[data-theme='dark'] .review-list-row,
+:root[data-theme='dark'] .activity-page-item { color: #eee6dd; }
+:root[data-theme='dark'] .review-row-preview { background: linear-gradient(135deg,#24201c,#3b3027); color: #f1e7dd; }
+:root[data-theme='dark'] .activity-page-icon { background: #24201c; color: #b5aba1; }
+:root[data-theme='dark'] .activity-page-icon.approved { background: rgba(92,204,155,.14); color: #74dda9; }
+:root[data-theme='dark'] .activity-page-icon.changes { background: rgba(255,139,132,.12); color: #ffaba4; }
+
+:root[data-theme='dark'] .project-hub-summary > div,
+:root[data-theme='dark'] .project-version-meta,
+:root[data-theme='dark'] .project-hub-snapshot-copy p,
+:root[data-theme='dark'] .project-hub-snapshot-steps span,
+:root[data-theme='dark'] .project-hub-snapshot-steps small { color: #b1a79d; }
+:root[data-theme='dark'] .project-version-reason { color: #ffaaa3; }
+:root[data-theme='dark'] .project-hub-snapshot-steps > div { background: #15120f; border-color: #39322b; }
+:root[data-theme='dark'] .project-hub-snapshot-steps > div.done { background: rgba(92,204,155,.10); border-color: #315745; }
+
+:root[data-theme='dark'] .upload-notes { border-color: #39322b; }
+:root[data-theme='dark'] .upload-notes div { border-color: #39322b; }
+:root[data-theme='dark'] .upload-notes p { color: #f1e8df; }
+:root[data-theme='dark'] .upload-notes span { color: #ffab7b; }
+:root[data-theme='dark'] .upload-error { background: #2a1a19; border-color: #5b3734; color: #ffaaa3; }
+
+/* --------------------------------------------------------------------------
+   DARK SETTINGS + PROFILE — explicitly fixes the screenshot failure mode.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .settings-index a { color: #b8aea4; }
+:root[data-theme='dark'] .settings-index a:hover { background: #24201c; color: #fff7ee; }
+:root[data-theme='dark'] .settings-field > span,
+:root[data-theme='dark'] .settings-savebar .btn-primary { color: #fff7ee; }
+:root[data-theme='dark'] .settings-identity-preview strong { color: #fff7ee; }
+:root[data-theme='dark'] .settings-identity-preview span { color: #aaa097; }
+:root[data-theme='dark'] .settings-link-grid a > svg:last-child { color: #9f968c; }
+:root[data-theme='dark'] .settings-inline-link { color: #ffab7b; }
+:root[data-theme='dark'] .settings-savebar { color: #eee6dd; }
+
+:root[data-theme='dark'] .profile-card-v15 { background: #1b1815; }
+:root[data-theme='dark'] .profile-card-v15 .eyebrow,
+:root[data-theme='dark'] .settings-card .eyebrow { color: #9f958c; }
+:root[data-theme='dark'] .profile-v15-details { border-color: #41382f; }
+:root[data-theme='dark'] .profile-v15-details > div { border-color: #41382f; }
+:root[data-theme='dark'] .profile-avatar-large-v15 { background: linear-gradient(135deg,#067a72,#149f96); color: #fff; }
+:root[data-theme='dark'] .profile-account-actions .row-action.danger { color: #ff9b94; border-color: #60403d; }
+:root[data-theme='dark'] .profile-account-actions .row-action.danger:hover { background: rgba(255,139,132,.10); border-color: #87534e; }
+
+/* --------------------------------------------------------------------------
+   DARK FORMS / MODALS / ERROR SURFACES.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .input-field,
+:root[data-theme='dark'] .settings-field input,
+:root[data-theme='dark'] .search-box,
+:root[data-theme='dark'] .review-composer textarea { color: #f1e8df; }
+
+:root[data-theme='dark'] .input-field::placeholder,
+:root[data-theme='dark'] .settings-field input::placeholder,
+:root[data-theme='dark'] .search-box input::placeholder { color: #8f867d; }
+
+:root[data-theme='dark'] .field-block > span,
+:root[data-theme='dark'] .toolbar-shortcut,
+:root[data-theme='dark'] .review-shortcuts-popover p { color: #b1a79d; }
+
+:root[data-theme='dark'] .confirm-modal,
+:root[data-theme='dark'] .share-modal,
+:root[data-theme='dark'] .account-delete-modal { color: #eee6dd; }
+:root[data-theme='dark'] .confirm-modal-copy p,
+:root[data-theme='dark'] .share-modal-copy { color: #b1a79d; }
+:root[data-theme='dark'] .confirm-modal-copy h2,
+:root[data-theme='dark'] .share-modal-top h2 { color: #fff7ee; }
+:root[data-theme='dark'] .share-modal-section-label { color: #a69c92; }
+:root[data-theme='dark'] .share-modal-footer-row,
+:root[data-theme='dark'] .share-modal-footer-row .share-modal-notice { color: #b1a79d; }
+
+:root[data-theme='dark'] .error-state-copy p,
+:root[data-theme='dark'] .error-state-dark .error-state-copy p { color: #b1a79d; }
+:root[data-theme='dark'] .error-state-copy h3 { color: #fff7ee; }
+:root[data-theme='dark'] .error-state-dark .eyebrow { color: #9f958c; }
+
+:root[data-theme='dark'] .not-found-card h1 { color: #fff7ee; }
+:root[data-theme='dark'] .not-found-card p { color: #b1a79d; }
+
+:root[data-theme='dark'] .upload-complete-card h1 { color: #fff7ee; }
+:root[data-theme='dark'] .upload-complete-card > p,
+:root[data-theme='dark'] .upload-complete-link,
+:root[data-theme='dark'] .upload-complete-note { color: #b1a79d; }
+
+/* --------------------------------------------------------------------------
+   DARK TOASTS / SHORTCUTS / NATIVE INTERACTION STATES.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .toast { background: #1b1815; border-color: #43392f; color: #eee6dd; }
+:root[data-theme='dark'] .toast-copy strong { color: #fff7ee; }
+:root[data-theme='dark'] .toast-copy span { color: #b1a79d; }
+:root[data-theme='dark'] .review-shortcuts-popover { background: #1a1714; border-color: #453b32; color: #eee6dd; }
+:root[data-theme='dark'] .review-shortcuts-popover p { color: #b1a79d; }
+
+/* Focus rings need to remain visible on both dark and warm-light surfaces. */
+:root[data-theme='dark'] button:focus-visible,
+:root[data-theme='dark'] a:focus-visible,
+:root[data-theme='dark'] input:focus-visible,
+:root[data-theme='dark'] textarea:focus-visible,
+:root[data-theme='dark'] select:focus-visible {
+  outline-color: rgba(255,171,123,.62);
+}
+
+/* --------------------------------------------------------------------------
+   LOADING STATES — enough contrast that the skeleton never looks broken.
+   -------------------------------------------------------------------------- */
+:root[data-theme='dark'] .v15-workspace-loading,
+:root[data-theme='dark'] .v15-loading-main { background: #12100e; }
+:root[data-theme='dark'] .v15-loading-sidebar,
+:root[data-theme='dark'] .v15-loading-topbar,
+:root[data-theme='dark'] .v15-loading-stats,
+:root[data-theme='dark'] .v15-loading-card,
+:root[data-theme='dark'] .v15-loading-toolbar { background: #1b1815; border-color: #39322b; }
+:root[data-theme='dark'] .skeleton { background: linear-gradient(90deg,#27221e 24%,#39312a 37%,#27221e 63%); background-size: 400% 100%; }
+
+/* Extra small-screen guarantee: keep the mobile account card readable. */
+@media (max-width: 760px) {
+  :root[data-theme='dark'] .workspace-account-card { background: #1b1815; }
+  :root[data-theme='dark'] .settings-savebar { border-color: #4b4239; background: rgba(27,24,21,.96); }
+}

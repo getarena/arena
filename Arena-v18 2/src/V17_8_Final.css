@@ -1,0 +1,701 @@
+
+/* ARENA V17.8 — FINAL UX CASCADE
+   Loaded last from main.jsx so the current UI rules are deterministic. */
+
+/* --- Brand/navigation: never render these product marks like browser links. --- */
+.workspace-brand-button,
+.workspace-brand-button span,
+.login-brand,
+.public-nav-brand,
+.about-brand,
+.public-footer-logo {
+  text-decoration: none !important;
+}
+.workspace-brand-button:hover span,
+.login-brand:hover,
+.public-nav-brand:hover,
+.about-brand:hover,
+.public-footer-logo:hover { text-decoration: none !important; }
+
+/* --- Public/about: light canvas plus explicit readable dark sections. --- */
+.about-page,
+.landing-page,
+.login-container,
+.public-page,
+.legal-page { color-scheme: light !important; }
+
+.about-page .about-dark-explain,
+.about-page .about-dark-explain .about-container,
+.about-page .about-dark-explain .about-section-head,
+.about-page .about-final,
+.about-page .about-final .about-final-inner {
+  color: #fff8f0 !important;
+}
+.about-page .about-dark-explain {
+  background: #1b1714 !important;
+  border-top: 1px solid #352b24 !important;
+  border-bottom: 1px solid #352b24 !important;
+}
+.about-page .about-dark-explain .about-index,
+.about-page .about-dark-explain .about-section-head .about-index,
+.about-page .about-final .about-index {
+  color: #b7a89b !important;
+}
+.about-page .about-dark-explain .about-section-head h2,
+.about-page .about-dark-explain .about-section-head p,
+.about-page .about-flow-step h3,
+.about-page .about-flow-step p,
+.about-page .about-final-inner h2,
+.about-page .about-final-inner p {
+  color: #fff8f0 !important;
+}
+.about-page .about-dark-explain .about-section-head p,
+.about-page .about-flow-step p,
+.about-page .about-final-inner p { color: #c9bdb2 !important; }
+.about-page .about-flow,
+.about-page .about-flow-step { border-color: #3b3028 !important; }
+.about-page .about-flow-step > span { color: #b7a89b !important; }
+.about-page .about-flow-icon {
+  background: #251c17 !important;
+  border-color: #6a432e !important;
+  color: #ff6a1a !important;
+}
+.about-page .about-final {
+  background: #1b1714 !important;
+  border-top: 1px solid #352b24 !important;
+}
+.about-page .about-final-lines { opacity: .10 !important; }
+.about-page .about-final-inner button {
+  background: #fffdfa !important;
+  color: #1d1a17 !important;
+  border-color: #fffdfa !important;
+}
+.about-page .about-final-inner button:hover {
+  background: #f0e8de !important;
+  color: #1d1a17 !important;
+}
+
+/* Landing dark bands use the same explicit light-on-dark contract. */
+.landing-page .lp-ticker-band,
+.landing-page .lp-review-story,
+.landing-page .lp-decision-section,
+.landing-page .lp-final-cta {
+  background: #1b1714 !important;
+  color: #fff8f0 !important;
+  border-color: #352b24 !important;
+}
+.landing-page .lp-ticker-band h2,
+.landing-page .lp-review-story h2,
+.landing-page .lp-decision-section h2,
+.landing-page .lp-final-cta h2,
+.landing-page .lp-review-story-copy h2,
+.landing-page .lp-decision-copy h2 { color: #fff8f0 !important; }
+.landing-page .lp-ticker-band p,
+.landing-page .lp-review-story p,
+.landing-page .lp-decision-section p,
+.landing-page .lp-final-cta p,
+.landing-page .lp-review-story-copy p,
+.landing-page .lp-decision-copy p { color: #c9bdb2 !important; }
+.landing-page .lp-ticker-band .section-index,
+.landing-page .lp-review-story .section-index,
+.landing-page .lp-decision-section .section-index,
+.landing-page .lp-final-cta .section-index { color: #b7a89b !important; }
+.landing-page .lp-ticker-rail span {
+  background: #251f1b !important;
+  color: #e8ddd3 !important;
+  border-color: #46392f !important;
+  box-shadow: none !important;
+}
+.landing-page .lp-ticker-rail span:hover {
+  background: #2d2520 !important;
+  color: #fff8f0 !important;
+  border-color: #5b483b !important;
+}
+
+/* --- Login: calmer editorial composition, no giant overlapping ornament. --- */
+.login-container {
+  background: #f3eee7 !important;
+}
+.login-split {
+  background: transparent !important;
+  border: 0 !important;
+  width: min(100%, 1180px) !important;
+  grid-template-columns: minmax(0, 1.06fr) minmax(430px, 500px) !important;
+  gap: 64px !important;
+}
+.login-copy-panel {
+  min-height: 560px !important;
+  padding: 54px 54px 48px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  border-radius: 26px !important;
+  background: #c94800 !important;
+  overflow: hidden !important;
+  box-shadow: 0 22px 56px rgba(126,52,10,.16) !important;
+}
+.login-copy-panel::before,
+.login-copy-panel::after { display:none !important; content:none !important; }
+.login-copy-panel .eyebrow { color: #fbe8da !important; }
+.login-copy-panel h1 {
+  max-width: 650px !important;
+  margin-top: 16px !important;
+  color: #fff8f0 !important;
+  font-size: clamp(46px, 5.1vw, 64px) !important;
+  line-height: 1.01 !important;
+  letter-spacing: -.055em !important;
+  text-shadow: none !important;
+}
+.login-copy-panel > p {
+  max-width: 600px !important;
+  margin-top: 18px !important;
+  color: #ffefe4 !important;
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+.login-proof-list {
+  max-width: 560px !important;
+  margin-top: 28px !important;
+  border-top-color: rgba(255,248,240,.30) !important;
+}
+.login-proof-list > div {
+  padding: 13px 0 !important;
+  color: #fff8f0 !important;
+  border-bottom-color: rgba(255,248,240,.30) !important;
+  font-size: 12px !important;
+}
+.login-proof-list svg { color: #fff8f0 !important; }
+.login-back-link { color: #fbe8da !important; font-size: 11px !important; }
+.login-back-link:hover { color: #fff8f0 !important; }
+.login-card {
+  max-width: 500px !important;
+  padding: 38px !important;
+  background: #fffdfa !important;
+  border-color: #d8cbbf !important;
+  box-shadow: 0 22px 56px rgba(84,48,29,.10) !important;
+}
+.login-card h2 { color: #1d1a17 !important; font-size: 30px !important; }
+.login-subtitle { color: #6b6259 !important; font-size: 14px !important; line-height: 1.7 !important; }
+.login-consent {
+  margin-top: 22px !important;
+  padding: 12px 14px !important;
+  border: 1px solid #ded4ca !important;
+  border-radius: 14px !important;
+  background: #faf6f0 !important;
+}
+.login-consent-label {
+  padding: 7px 0 !important;
+  color: #5f574f !important;
+  font-size: 12px !important;
+}
+.login-age-consent { border-top-color: #e4dbd1 !important; }
+.login-consent-box { width: 20px !important; height: 20px !important; border-color: #b9aa9c !important; }
+.login-consent-copy a { color: #a83e00 !important; text-decoration: underline !important; text-underline-offset: 2px !important; }
+.btn-google {
+  min-height: 50px !important;
+  margin-top: 12px !important;
+  background: #201c18 !important;
+  border-color: #201c18 !important;
+  color: #fffdfa !important;
+}
+.btn-google:hover:not(:disabled) { background: #302923 !important; border-color: #302923 !important; color: #fffdfa !important; }
+.btn-google:disabled { background: #d7cec4 !important; color: #786e65 !important; border-color: #d7cec4 !important; opacity: 1 !important; }
+.login-security { color: #756b62 !important; font-size: 11px !important; }
+.login-about-link { color: #a83e00 !important; font-size: 12px !important; text-decoration: none !important; }
+.login-about-link:hover { color: #7d2f00 !important; text-decoration: none !important; }
+
+/* --- Workspace typography --- */
+.workspace-nav-item { font-size: 13px !important; min-height: 44px !important; }
+.workspace-nav-label { font-size: 9px !important; }
+.settings-index a { font-size: 12px !important; }
+.settings-card { padding: 24px !important; }
+.settings-card h2 { font-size: 22px !important; }
+.settings-copy { font-size: 13px !important; line-height: 1.7 !important; }
+.settings-field > span { font-size: 11px !important; }
+.settings-field input { min-height: 46px !important; font-size: 13px !important; }
+.settings-identity-preview strong { font-size: 12px !important; }
+.settings-identity-preview span { font-size: 10px !important; line-height: 1.5 !important; }
+.settings-subsection { padding: 16px 0 !important; }
+.settings-subsection strong { font-size: 12px !important; }
+.settings-subsection span { font-size: 10px !important; line-height: 1.5 !important; }
+.settings-toggle-row strong { font-size: 12px !important; }
+.settings-toggle-row small { font-size: 10px !important; line-height: 1.5 !important; }
+.settings-link-grid strong { font-size: 11px !important; }
+.settings-link-grid small { font-size: 9px !important; line-height: 1.45 !important; }
+.settings-savebar span { font-size: 10px !important; }
+
+/* Upload: explicit readable file surface + input controls in both themes. */
+.drop-zone,
+:root[data-theme='dark'] .drop-zone {
+  background: #f7f2eb !important;
+  color: #2b251f !important;
+  border-color: #b9aa9b !important;
+}
+.drop-zone:hover,
+.drop-zone.dragging,
+:root[data-theme='dark'] .drop-zone:hover,
+:root[data-theme='dark'] .drop-zone.dragging {
+  background: #fff0e7 !important;
+  color: #2b251f !important;
+  border-color: #c94800 !important;
+}
+.drop-zone > span,
+.drop-zone.has-file > span,
+:root[data-theme='dark'] .drop-zone > span { color: #5e554e !important; }
+.drop-zone strong,
+.drop-zone .drop-file-name { color: #2b251f !important; }
+.drop-zone.has-file,
+:root[data-theme='dark'] .drop-zone.has-file { background:#eef8f3 !important; border-color:#8fc8ad !important; color:#245e46 !important; }
+.drop-replace { color:#a83e00 !important; }
+.input-field::placeholder { color:#7b7066 !important; opacity:1 !important; }
+:root[data-theme='dark'] .input-field { background:#171412 !important; color:#f4eee7 !important; border-color:#50443a !important; }
+:root[data-theme='dark'] .input-field::placeholder { color:#9f9388 !important; }
+:root[data-theme='dark'] .upload-panel .field-block > span { color:#ddd2c6 !important; }
+
+/* --- Project hub: no review snapshot; cards lead to this page, then review. --- */
+.dashboard-bottom-grid-single { grid-template-columns: minmax(0,1fr) !important; }
+
+@media (max-width: 980px) {
+  .login-split { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .login-copy-panel { min-height: 420px !important; }
+  .login-card { max-width: 560px !important; justify-self: stretch !important; }
+}
+@media (max-width: 560px) {
+  .login-copy-panel { min-height: 360px !important; padding: 34px 26px !important; border-radius: 20px !important; }
+  .login-copy-panel h1 { font-size: 42px !important; }
+  .login-card { padding: 28px 22px !important; }
+}
+
+/* ============================================================
+   V17.8 READABILITY BASELINE
+   One deliberately readable type scale across the authenticated
+   workspace. Legacy tiny rules must not win over these values.
+   ============================================================ */
+
+/* App navigation should read as navigation, not browser links. */
+.workspace-nav-item,
+.workspace-nav-item:hover,
+.workspace-nav-item:focus-visible,
+.workspace-nav-item:active,
+.workspace-nav-item span,
+.workspace-nav-item svg,
+.settings-index a,
+.settings-index a:hover,
+.settings-index a:focus-visible {
+  text-decoration: none !important;
+}
+.workspace-nav-item {
+  font-size: 14px !important;
+  font-weight: 650 !important;
+  letter-spacing: 0 !important;
+}
+.workspace-nav-label {
+  font-size: 10px !important;
+  letter-spacing: .18em !important;
+}
+.workspace-breadcrumb { font-size: 13px !important; }
+.workspace-topbar-activity,
+.workspace-topbar-avatar { min-width: 40px !important; min-height: 40px !important; }
+
+/* Shared workspace page type scale. */
+.workspace-content,
+.workspace-content input,
+.workspace-content select,
+.workspace-content textarea,
+.workspace-content button {
+  font-size: 14px;
+}
+.workspace-page-heading h1,
+.dashboard-hero-v15 h1,
+.reviews-shell .workspace-page-heading h1,
+.activity-page-shell .workspace-page-heading h1,
+.settings-shell .workspace-page-heading h1 {
+  font-size: clamp(40px, 4.2vw, 52px) !important;
+  line-height: 1.03 !important;
+  letter-spacing: -.045em !important;
+}
+.workspace-page-heading p,
+.dashboard-hero-copy > p,
+.reviews-shell .workspace-page-heading p,
+.activity-page-shell .workspace-page-heading p {
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+.eyebrow {
+  font-size: 10px !important;
+  letter-spacing: .19em !important;
+}
+.btn-primary,
+.btn-secondary,
+.row-action {
+  min-height: 44px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+.status-badge {
+  font-size: 11px !important;
+  font-weight: 750 !important;
+}
+
+/* Dashboard / projects. */
+.dashboard-section-head h2,
+.dashboard-bottom-card-head h2,
+.project-list-section h2 {
+  font-size: 26px !important;
+  line-height: 1.1 !important;
+}
+.dashboard-section-head p { font-size: 12px !important; }
+.dashboard-project-stat strong { font-size: 30px !important; }
+.dashboard-project-stat span,
+.dashboard-project-stat small { font-size: 12px !important; }
+.project-card-title-row h3 { font-size: 18px !important; }
+.project-card-title-row p,
+.project-card-meta { font-size: 13px !important; }
+.project-card-meta span { font-size: 12px !important; }
+.dashboard-bottom-card-head button,
+.dashboard-activity-list > button { font-size: 13px !important; }
+.dashboard-activity-list strong { font-size: 14px !important; }
+.dashboard-activity-list small,
+.dashboard-activity-list time { font-size: 12px !important; }
+
+/* Reviews and activity. */
+.reviews-filter-bar button {
+  font-size: 13px !important;
+  min-height: 42px !important;
+}
+.reviews-list-card .review-row,
+.activity-page-item { font-size: 14px !important; }
+.reviews-list-card h3,
+.activity-page-item strong { font-size: 16px !important; }
+.reviews-list-card small,
+.activity-page-item small,
+.activity-page-item time { font-size: 12px !important; }
+
+/* Project hub. */
+.project-hub-head h1 { font-size: clamp(44px, 4.5vw, 56px) !important; }
+.project-hub-head p { font-size: 15px !important; line-height: 1.7 !important; }
+.project-hub-summary span { font-size: 12px !important; }
+.project-hub-summary strong { font-size: 17px !important; }
+.project-hub-section-heading h2 { font-size: 26px !important; }
+.version-kicker { font-size: 10px !important; letter-spacing: .16em !important; }
+.project-version-title-row h3 { font-size: 18px !important; }
+.project-version-meta { font-size: 12px !important; }
+.project-version-reason { font-size: 13px !important; line-height: 1.55 !important; }
+.project-version-actions .row-action { font-size: 13px !important; min-height: 40px !important; }
+.project-version-play {
+  width: 36px !important;
+  height: 36px !important;
+  background: rgba(18,15,12,.84) !important;
+  color: #fffdfa !important;
+  border: 1px solid rgba(255,253,250,.55) !important;
+}
+
+/* Upload: readable labels, helper copy, fields and drop zone. */
+.upload-side h1 { font-size: clamp(40px, 4vw, 52px) !important; line-height: 1.04 !important; }
+.upload-side > p { font-size: 15px !important; line-height: 1.75 !important; }
+.upload-notes p { font-size: 14px !important; }
+.upload-notes span { font-size: 11px !important; }
+.upload-panel h2 { font-size: 25px !important; }
+.upload-panel-sub { font-size: 13px !important; line-height: 1.6 !important; }
+.upload-limit { font-size: 11px !important; }
+.mode-switch button span { font-size: 14px !important; font-weight: 750 !important; }
+.mode-switch button small { font-size: 11px !important; }
+.field-block > span { font-size: 12px !important; font-weight: 700 !important; }
+.input-field,
+.input-field.large { min-height: 46px !important; font-size: 14px !important; }
+.input-field::placeholder { font-size: 14px !important; }
+.drop-zone {
+  min-height: 220px !important;
+  background: #f7f2eb !important;
+  color: #2b251f !important;
+  border-color: #b9aa9b !important;
+}
+.drop-zone strong { font-size: 15px !important; color: #2b251f !important; }
+.drop-zone > span { font-size: 13px !important; color: #665c53 !important; }
+.drop-zone .drop-icon {
+  width: 50px !important;
+  height: 50px !important;
+  background: #fffdfa !important;
+  color: #b84400 !important;
+  border-color: #d9cec2 !important;
+}
+.upload-trust-row,
+.upload-progress-copy,
+.upload-progress-note,
+.upload-error,
+.field-inline-error { font-size: 12px !important; }
+.upload-error > div { color: #9b2f25 !important; }
+.upload-error { background: #fff1ee !important; border-color: #e8b4ad !important; }
+
+/* Settings: materially larger reading text while keeping the layout compact. */
+.settings-layout { gap: 28px !important; }
+.settings-index { padding: 16px !important; }
+.settings-index a {
+  font-size: 14px !important;
+  font-weight: 650 !important;
+  min-height: 42px !important;
+}
+.settings-card { padding: 30px !important; }
+.settings-card h2 { font-size: 25px !important; line-height: 1.12 !important; }
+.settings-copy { font-size: 15px !important; line-height: 1.7 !important; max-width: 820px !important; }
+.settings-field > span { font-size: 13px !important; }
+.settings-field input { min-height: 48px !important; font-size: 15px !important; }
+.settings-identity-preview { padding: 16px !important; }
+.settings-identity-preview strong { font-size: 14px !important; }
+.settings-identity-preview span { font-size: 12px !important; line-height: 1.55 !important; }
+.settings-subsection { padding: 20px 0 !important; }
+.settings-subsection strong,
+.settings-toggle-row strong { font-size: 14px !important; }
+.settings-subsection span,
+.settings-toggle-row small {
+  font-size: 12px !important;
+  line-height: 1.55 !important;
+}
+.settings-link-grid a { min-height: 72px !important; font-size: 14px !important; }
+.settings-link-grid strong { font-size: 14px !important; }
+.settings-link-grid small { font-size: 12px !important; line-height: 1.5 !important; }
+.settings-inline-link { font-size: 13px !important; }
+.settings-savebar span { font-size: 12px !important; }
+.settings-savebar .btn-primary { font-size: 13px !important; }
+
+/* Login: keep the flat warm composition but make it feel intentional. */
+.login-branding { z-index: 30 !important; }
+.login-brand,
+.login-brand span { color: #201c18 !important; text-decoration: none !important; }
+.login-copy-panel {
+  position: relative !important;
+  min-height: 610px !important;
+  padding: 64px !important;
+  justify-content: flex-end !important;
+}
+.login-copy-panel::after {
+  display: block !important;
+  content: '' !important;
+  position: absolute !important;
+  width: 440px !important;
+  height: 440px !important;
+  right: -220px !important;
+  top: -160px !important;
+  border: 1px solid rgba(255,248,240,.30) !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+.login-copy-panel > * { position: relative !important; z-index: 1 !important; }
+.login-copy-panel h1 { max-width: 720px !important; }
+.login-proof-list > div { font-size: 13px !important; }
+.login-card { padding: 42px !important; }
+.login-card h2 { font-size: 34px !important; }
+.login-subtitle { font-size: 15px !important; }
+.login-consent-label { font-size: 13px !important; }
+.login-consent-copy { line-height: 1.55 !important; }
+.btn-google { min-height: 52px !important; font-size: 14px !important; }
+.login-security { font-size: 12px !important; }
+.login-about-link { font-size: 13px !important; }
+
+/* Logo anchors: no underline anywhere in Arena chrome. */
+a.workspace-brand-button,
+a.workspace-brand-button *,
+a.login-brand,
+a.login-brand *,
+a.public-nav-brand,
+a.public-nav-brand *,
+a.about-brand,
+a.about-brand *,
+a.public-footer-logo,
+a.public-footer-logo *,
+a.lp-logo,
+a.lp-logo * {
+  text-decoration: none !important;
+}
+
+/* Public/info pages: readable body copy and headings. */
+.about-page p,
+.legal-page p,
+.public-page p { font-size: 16px !important; line-height: 1.75 !important; }
+.about-page h1,
+.legal-page h1,
+.public-page h1 { font-size: clamp(44px, 6vw, 72px) !important; line-height: 1.03 !important; }
+.about-page h2,
+.legal-page h2,
+.public-page h2 { font-size: clamp(30px, 4vw, 48px) !important; line-height: 1.08 !important; }
+
+/* The review snapshot has been removed from the product flow. */
+.project-hub-snapshot { display: none !important; }
+
+@media (max-width: 980px) {
+  .login-copy-panel { min-height: 440px !important; padding: 42px !important; }
+  .login-copy-panel::after { width: 330px !important; height: 330px !important; right: -165px !important; top: -100px !important; }
+  .login-card { padding: 34px !important; }
+}
+@media (max-width: 560px) {
+  .workspace-page-heading h1,
+  .dashboard-hero-v15 h1,
+  .reviews-shell .workspace-page-heading h1,
+  .activity-page-shell .workspace-page-heading h1,
+  .settings-shell .workspace-page-heading h1 { font-size: 38px !important; }
+  .workspace-page-heading p { font-size: 14px !important; }
+  .settings-card { padding: 22px !important; }
+  .login-copy-panel { min-height: 360px !important; padding: 30px 26px !important; }
+  .login-copy-panel::after { width: 260px !important; height: 260px !important; right: -135px !important; top: -90px !important; }
+  .login-card { padding: 28px 22px !important; }
+  .login-card h2 { font-size: 30px !important; }
+}
+
+
+/* ================================================================
+   V17.9 — SETTINGS CLEANUP + PUBLIC FOOTER
+   ================================================================ */
+
+/* Accent customization is intentionally removed; Arena stays orange everywhere. */
+.settings-subsection-column,
+.accent-picker { display: none !important; }
+
+/* Settings no longer has the old mini navigation rail. */
+.settings-layout { grid-template-columns: minmax(0,1fr) !important; gap: 0 !important; }
+.settings-stack { width: 100%; max-width: 980px; }
+
+/* Save status and button stay on the same visual baseline. */
+.settings-savebar {
+  min-height: 68px !important;
+  padding: 10px 12px 10px 18px !important;
+  align-items: center !important;
+  border-radius: 14px !important;
+}
+.settings-savebar > span {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  font-size: 12px !important;
+  line-height: 1.4 !important;
+  color: var(--muted) !important;
+}
+.settings-savebar .btn-primary {
+  flex: 0 0 auto !important;
+  min-height: 46px !important;
+  padding: 0 20px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+/* Support no longer appears in the workspace sidebar; support remains in Settings/footer. */
+.workspace-nav-external { display: none !important; }
+
+/* Public footer: dark editorial structure, larger type, restrained Arena orange. */
+.public-footer-v17-9 {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 28px 28px !important;
+  background: #11100f !important;
+  color: #f4eee8 !important;
+  border-top: 1px solid #332c26 !important;
+}
+.public-footer-v17-9-inner {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding-top: 56px;
+}
+.public-footer-v17-9-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.55fr) repeat(3, minmax(130px, .72fr));
+  gap: 52px;
+  padding-bottom: 42px;
+  border-bottom: 1px solid #332c26;
+}
+.public-footer-v17-9-brandmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff8f0 !important;
+  text-decoration: none !important;
+  font-size: 18px;
+  font-weight: 800;
+}
+.public-footer-v17-9-brand p {
+  max-width: 340px;
+  margin: 22px 0 28px;
+  color: #a99e94 !important;
+  font-size: 14px !important;
+  line-height: 1.7 !important;
+}
+.public-footer-v17-9-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #f4eee8 !important;
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: 700;
+}
+.public-footer-v17-9-email:hover { color: #ffad82 !important; }
+.public-footer-v17-9-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+}
+.public-footer-v17-9-column h3 {
+  margin: 0 0 6px;
+  color: #fff8f0;
+  font-size: 12px;
+  font-weight: 800;
+}
+.public-footer-v17-9-column a {
+  color: #a99e94 !important;
+  text-decoration: none !important;
+  font-size: 13px !important;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.public-footer-v17-9-column a:hover {
+  color: #fff8f0 !important;
+}
+.public-footer-v17-9-wordmark {
+  overflow: hidden;
+  margin: 30px 0 10px;
+  color: #262320;
+  font-size: clamp(110px, 19vw, 240px);
+  font-weight: 900;
+  line-height: .78;
+  letter-spacing: -.08em;
+  user-select: none;
+  white-space: nowrap;
+}
+.public-footer-v17-9-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 20px;
+  color: #8e847b;
+  font-size: 11px;
+}
+.public-footer-v17-9-bottom span:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@media (max-width: 900px) {
+  .public-footer-v17-9-grid { grid-template-columns: 1.25fr 1fr 1fr; gap: 34px; }
+  .public-footer-v17-9-brand { grid-column: 1 / -1; }
+}
+
+@media (max-width: 620px) {
+  .public-footer-v17-9 { padding: 0 18px 20px !important; }
+  .public-footer-v17-9-inner { padding-top: 40px; }
+  .public-footer-v17-9-grid { grid-template-columns: 1fr 1fr; gap: 30px 22px; }
+  .public-footer-v17-9-brand { grid-column: 1 / -1; }
+  .public-footer-v17-9-wordmark { margin-top: 22px; font-size: 96px; }
+  .public-footer-v17-9-bottom { align-items: flex-start; flex-direction: column; }
+}
+
+/* Keep the footer dark even when Arena's workspace is in light mode. */
+.landing-page .public-footer-v17-9,
+.about-page .public-footer-v17-9,
+.public-page .public-footer-v17-9 { background: #11100f !important; color: #f4eee8 !important; }
