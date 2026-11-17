@@ -4,7 +4,6 @@
 */
 
 :root {
-  color-scheme: light;
   --as-font-sans: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --as-ink: #202326;
   --as-ink-soft: #454a4e;
@@ -37,10 +36,6 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
-}
-
-body {
-  font-family: var(--as-font-sans);
 }
 
 .landing-page,
