@@ -28,7 +28,6 @@ export function WorkspaceShell({ user, activeView, onNavigate, theme, onThemeCha
   const [mobileOpen, setMobileOpen] = useState(false)
   const [accountOpen, setAccountOpen] = useState(false)
   const accountRef = useRef(null)
-  const workspaceName = localStorage.getItem('arena:workspaceName')?.trim() || 'Arena workspace'
 
   useEffect(() => {
     const onPointer = (event) => {
@@ -112,15 +111,15 @@ export function WorkspaceShell({ user, activeView, onNavigate, theme, onThemeCha
             onClick={() => setAccountOpen((value) => !value)}
             aria-expanded={accountOpen}
             aria-haspopup="menu"
-            aria-label="Open account menu"
+            aria-label="Open Arena Studio menu"
           >
             <div className="workspace-avatar">
               <span>{initialsFor(user)}</span>
               {user?.photoURL ? <img src={user.photoURL} alt="" referrerPolicy="no-referrer" onError={(event) => { event.currentTarget.style.display = 'none' }} /> : null}
             </div>
             <div className="workspace-account-copy">
-              <strong>{workspaceName}</strong>
-              <span>{user?.displayName || 'Personal workspace'}</span>
+              <strong>Arena Studio</strong>
+              <span>{user?.email || 'Account & appearance'}</span>
             </div>
             <Icon name="chevronDown" size={14} />
           </button>
