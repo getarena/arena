@@ -383,3 +383,290 @@ h1, h2, h3, h4 { font-family: var(--arena-studio-font-display); }
   .arena-ui-button { transition: none; }
   .arena-ui-button:hover { transform: none; }
 }
+
+
+/* ==========================================================================
+   AUTHENTICATED APP SHELL — Arena Studio surfaces
+   Tokens respond to the existing root data-theme preference. No nav or action
+   behaviour is changed here; mobile drawer mechanics remain in the base CSS.
+   ========================================================================== */
+
+:root {
+  --arena-studio-accent-soft: #fff0e7;
+  --arena-studio-accent-ink: #a83e00;
+}
+:root[data-theme='dark'] {
+  --arena-studio-accent-soft: #2c211b;
+  --arena-studio-accent-ink: #ff9a68;
+}
+
+/* Reapply the public light-surface aliases explicitly; workspace tokens can
+   now move to Midnight without leaking the dark palette into public pages. */
+.landing-page,
+.public-page,
+.about-page,
+.login-container {
+  --arena-studio-accent-soft: #fff0e7;
+  --arena-studio-accent-ink: #a83e00;
+}
+
+.workspace-shell {
+  grid-template-columns: 256px minmax(0, 1fr);
+  background: var(--arena-studio-canvas);
+  color: var(--arena-studio-ink);
+}
+.workspace-sidebar {
+  background: var(--arena-studio-surface-raised);
+  border-right: 1px solid var(--arena-studio-border);
+}
+.workspace-sidebar-brand {
+  height: 74px;
+  padding: 0 19px;
+  border-bottom: 1px solid var(--arena-studio-border);
+}
+.workspace-brand-button {
+  gap: 10px;
+  color: var(--arena-studio-ink);
+  font-size: 16px;
+  letter-spacing: -.035em;
+  text-decoration: none;
+}
+.workspace-brand-button:hover span { color: var(--arena-studio-accent-hover); }
+.workspace-sidebar-scroll { padding: 22px 13px 12px; }
+.workspace-nav-group + .workspace-nav-group { margin-top: 25px; }
+.workspace-nav-label {
+  padding: 0 11px 9px;
+  color: var(--arena-studio-faint);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+.workspace-nav-items { gap: 4px; }
+.workspace-nav-item {
+  min-height: 43px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  color: var(--arena-studio-muted);
+  font-size: 12px;
+  font-weight: 700;
+  transition: background-color .16s ease, color .16s ease;
+}
+.workspace-nav-item svg { color: var(--arena-studio-faint); }
+.workspace-nav-item:hover {
+  background: var(--arena-studio-surface-muted);
+  color: var(--arena-studio-ink);
+}
+.workspace-nav-item.active {
+  background: var(--arena-studio-accent-soft);
+  color: var(--arena-studio-accent-ink);
+}
+.workspace-nav-item.active svg { color: var(--arena-studio-accent-ink); }
+
+.workspace-sidebar-bottom {
+  padding: 13px;
+  border-top: 1px solid var(--arena-studio-border);
+}
+.workspace-account-card {
+  min-height: 58px;
+  padding: 9px;
+  border: 1px solid var(--arena-studio-border);
+  border-radius: 12px;
+  background: var(--arena-studio-surface-muted);
+  color: var(--arena-studio-ink);
+}
+.workspace-account-card:hover,
+.workspace-account-card.open {
+  border-color: var(--arena-studio-border-strong);
+  background: var(--arena-studio-surface-raised);
+}
+.workspace-account-card.open {
+  border-color: rgba(201,72,0,.32);
+}
+.workspace-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--arena-studio-accent-soft);
+  color: var(--arena-studio-accent-ink);
+  font-size: 11px;
+}
+.workspace-account-copy { gap: 2px; }
+.workspace-account-copy strong {
+  color: var(--arena-studio-ink);
+  font-size: 12px;
+  font-weight: 800;
+}
+.workspace-account-copy span {
+  color: var(--arena-studio-muted);
+  font-size: 10px;
+}
+.workspace-account-card > svg { color: var(--arena-studio-muted); }
+
+.workspace-main { min-width: 0; background: var(--arena-studio-canvas); }
+.workspace-topbar {
+  height: 66px;
+  padding: 0 clamp(18px, 2.6vw, 34px);
+  background: color-mix(in srgb, var(--arena-studio-surface-raised) 91%, transparent);
+  border-bottom: 1px solid var(--arena-studio-border);
+  backdrop-filter: blur(18px);
+}
+.workspace-menu-button,
+.workspace-topbar-activity {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--arena-studio-border);
+  border-radius: 10px;
+  background: var(--arena-studio-surface-raised);
+  color: var(--arena-studio-muted);
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease;
+}
+.workspace-menu-button:hover,
+.workspace-topbar-activity:hover,
+.workspace-topbar-activity.active {
+  border-color: rgba(201,72,0,.28);
+  background: var(--arena-studio-accent-soft);
+  color: var(--arena-studio-accent-ink);
+}
+.workspace-content { min-width: 0; overflow-x: clip; background: var(--arena-studio-canvas); }
+
+.workspace-account-popover {
+  border-color: var(--arena-studio-border);
+  border-radius: 14px;
+  background: var(--arena-studio-surface-raised);
+  box-shadow: var(--arena-studio-shadow-lg);
+}
+.workspace-account-popover-head strong { color: var(--arena-studio-ink); font-size: 12px; }
+.workspace-account-popover-head span { color: var(--arena-studio-muted); font-size: 10px; }
+.workspace-account-popover-line { background: var(--arena-studio-border); }
+.workspace-account-popover > button {
+  min-height: 41px;
+  border-radius: 9px;
+  color: var(--arena-studio-ink);
+  font-size: 11px;
+}
+.workspace-account-popover > button:hover { background: var(--arena-studio-surface-muted); }
+.workspace-account-popover > button svg { color: var(--arena-studio-muted); }
+.workspace-account-popover .workspace-account-danger { color: var(--arena-studio-danger); }
+.workspace-account-theme {
+  min-height: 48px;
+  color: var(--arena-studio-ink);
+}
+.workspace-account-theme > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--arena-studio-copy);
+  font-size: 11px;
+  font-weight: 700;
+}
+.theme-toggle {
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--arena-studio-border);
+  border-radius: 9px;
+  background: var(--arena-studio-surface-muted);
+}
+.theme-toggle button {
+  min-height: 29px;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--arena-studio-muted);
+  font-size: 10px;
+  font-weight: 700;
+}
+.theme-toggle button.active {
+  background: var(--arena-studio-surface-raised);
+  color: var(--arena-studio-ink);
+  box-shadow: 0 1px 4px rgba(24,28,31,.09);
+}
+
+.workspace-shell a:focus-visible,
+.workspace-shell button:focus-visible {
+  outline: 3px solid rgba(201,72,0,.24);
+  outline-offset: 2px;
+}
+
+/* Dark workspace surfaces use Midnight tokens; media and page-specific cards
+   remain owned by the components that render them. */
+:root[data-theme='dark'] .workspace-shell,
+:root[data-theme='dark'] .workspace-main,
+:root[data-theme='dark'] .workspace-content {
+  background: var(--arena-midnight-canvas);
+  color: var(--arena-midnight-ink);
+}
+:root[data-theme='dark'] .workspace-sidebar {
+  background: var(--arena-midnight-surface);
+  border-right-color: var(--arena-midnight-border);
+}
+:root[data-theme='dark'] .workspace-sidebar-brand,
+:root[data-theme='dark'] .workspace-sidebar-bottom,
+:root[data-theme='dark'] .workspace-topbar {
+  border-color: var(--arena-midnight-border);
+}
+:root[data-theme='dark'] .workspace-topbar {
+  background: rgba(29,34,39,.92);
+}
+:root[data-theme='dark'] .workspace-brand-button { color: var(--arena-midnight-ink); }
+:root[data-theme='dark'] .workspace-nav-label { color: #89929a; }
+:root[data-theme='dark'] .workspace-nav-item { color: #b5bcc1; }
+:root[data-theme='dark'] .workspace-nav-item svg { color: #8f989f; }
+:root[data-theme='dark'] .workspace-nav-item:hover {
+  background: #252c32;
+  color: var(--arena-midnight-ink);
+}
+:root[data-theme='dark'] .workspace-nav-item.active {
+  background: var(--arena-studio-accent-soft);
+  color: var(--arena-studio-accent-ink);
+}
+:root[data-theme='dark'] .workspace-nav-item.active svg { color: var(--arena-studio-accent-ink); }
+:root[data-theme='dark'] .workspace-account-card,
+:root[data-theme='dark'] .workspace-topbar-activity,
+:root[data-theme='dark'] .workspace-menu-button,
+:root[data-theme='dark'] .workspace-account-popover {
+  border-color: var(--arena-midnight-border);
+  background: var(--arena-midnight-surface-raised);
+  color: var(--arena-midnight-ink);
+}
+:root[data-theme='dark'] .workspace-account-card:hover,
+:root[data-theme='dark'] .workspace-account-card.open,
+:root[data-theme='dark'] .workspace-topbar-activity:hover,
+:root[data-theme='dark'] .workspace-topbar-activity.active {
+  border-color: rgba(255,154,104,.36);
+  background: #30251f;
+  color: var(--arena-studio-accent-ink);
+}
+:root[data-theme='dark'] .workspace-avatar {
+  background: #3a2920;
+  color: #ffb184;
+}
+:root[data-theme='dark'] .workspace-account-copy strong,
+:root[data-theme='dark'] .workspace-account-popover-head strong { color: var(--arena-midnight-ink); }
+:root[data-theme='dark'] .workspace-account-copy span,
+:root[data-theme='dark'] .workspace-account-popover-head span { color: var(--arena-midnight-muted); }
+:root[data-theme='dark'] .workspace-account-popover-line { background: var(--arena-midnight-border); }
+:root[data-theme='dark'] .workspace-account-popover > button { color: var(--arena-midnight-ink); }
+:root[data-theme='dark'] .workspace-account-popover > button:hover { background: #30373e; }
+:root[data-theme='dark'] .workspace-account-theme > div { color: var(--arena-midnight-copy); }
+:root[data-theme='dark'] .theme-toggle {
+  border-color: var(--arena-midnight-border);
+  background: #191f24;
+}
+:root[data-theme='dark'] .theme-toggle button.active {
+  background: #343c43;
+  color: var(--arena-midnight-ink);
+  box-shadow: none;
+}
+
+@media (max-width: 980px) {
+  .workspace-sidebar { box-shadow: 18px 0 56px rgba(23,27,31,.12); }
+}
+@media (max-width: 560px) {
+  .workspace-sidebar-brand { height: 64px; }
+  .workspace-topbar { height: 58px; }
+  .workspace-content { min-height: calc(100vh - 58px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .workspace-nav-item, .workspace-menu-button, .workspace-topbar-activity { transition: none; }
+}
