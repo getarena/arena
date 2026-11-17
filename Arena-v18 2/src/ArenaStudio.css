@@ -660,6 +660,7 @@ h1, h2, h3, h4 { font-family: var(--arena-studio-font-display); }
 }
 
 @media (max-width: 980px) {
+  .workspace-shell { grid-template-columns: minmax(0, 1fr); }
   .workspace-sidebar { box-shadow: 18px 0 56px rgba(23,27,31,.12); }
 }
 @media (max-width: 560px) {

@@ -85,8 +85,8 @@ export function ArenaField({
         aria-invalid={error ? 'true' : undefined}
         aria-describedby={describedBy}
       />
-      {description && descriptionId ? <p className="arena-ui-field-help" id={descriptionId}>{description}</p> : null}
-      {error && errorId ? <p className="arena-ui-field-error" id={errorId}>{error}</p> : null}
+      {description ? <p className="arena-ui-field-help" id={descriptionId || undefined}>{description}</p> : null}
+      {error ? <p className="arena-ui-field-error" id={errorId || undefined}>{error}</p> : null}
     </div>
   )
 }
