@@ -1,20 +1,18 @@
 import { BrandMark, Icon } from './Icon'
 import { PublicFooter } from './PublicFooter'
 
-function go(path) { window.location.href = path }
-
 export function PublicNav({ active = '' }) {
   return (
     <nav className="public-nav" aria-label="Arena public navigation">
-      <button type="button" className="public-nav-brand" onClick={() => go('/')} aria-label="Go to Arena home"><BrandMark size={29} /><span>Arena</span></button>
+      <a className="public-nav-brand" href="/" aria-label="Go to Arena home"><BrandMark size={29} /><span>Arena</span></a>
       <div className="public-nav-links">
-        <button type="button" onClick={() => go('/#problem')}>Why Arena</button>
-        <button type="button" onClick={() => go('/#review-room')}>Review room</button>
-        <button type="button" onClick={() => go('/#workflow')}>Workflow</button>
-        <a className={active === 'about' ? 'active' : ''} href="/about" target="_blank" rel="noopener noreferrer">About</a>
+        <a href="/#problem">Why Arena</a>
+        <a href="/#review-room">Review room</a>
+        <a href="/#workflow">Workflow</a>
+        <a className={active === 'about' ? 'active' : ''} href="/about">About</a>
       </div>
       <div className="public-nav-actions">
-        <button type="button" className="btn-primary compact" onClick={() => go('/login')}>Start free <Icon name="arrowRight" size={14} /></button>
+        <a className="btn-primary compact" href="/login">Start free <Icon name="arrowRight" size={14} /></a>
       </div>
     </nav>
   )
