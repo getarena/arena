@@ -1,0 +1,50 @@
+name: Arena Studio quality checks
+
+on:
+  push:
+    branches:
+      - "redesign/**"
+    paths:
+      - "Arena-v18 2/**"
+      - ".github/workflows/arena-studio-quality.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "Arena-v18 2/**"
+      - ".github/workflows/arena-studio-quality.yml"
+
+concurrency:
+  group: arena-studio-quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Lint, build, and security tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: "Arena-v18 2"
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: "Arena-v18 2/package-lock.json"
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Run existing security regression suite
+        run: npm run test:security
