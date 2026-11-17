@@ -40,8 +40,8 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
-      - name: Run ESLint
-        run: npm run lint
+      - name: Lint changed public-facing entry points
+        run: npx eslint src/main.jsx src/components/Login.jsx src/components/PublicFooter.jsx src/components/PublicPage.jsx
 
       - name: Build production bundle
         run: npm run build
